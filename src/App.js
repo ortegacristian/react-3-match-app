@@ -1,23 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
 
-function App() {
+import './index.css';
+
+//Definimos los diferentes colores que va a tener los sprites del juego
+const colores = [
+  'red',
+  'blue',
+  'yellow',
+  'orange',
+  'green',
+  'purple'
+]
+
+//Definiremos una parrilla de 8 * 8 (64 items) 
+const tamañoParrilla = 64;
+const anchoParrilla = 8;
+const posicionComprobarColumnasTres = 47;
+const posicionComprobarColumnasCuatro = 33;
+
+const App = () => {
+
+  //Guardamos y recuperamos en el estado del componente, el estado del tablero
+  const [tableroActual, setTableroActual] = useState([])
+
+  
+
+  
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="tablero">
+        {tableroActual.map((color, posicion) => (
+          <object
+            key={posicion}
+            alt={color}
+            aria-label={color}
+            style={{backgroundColor: color}}/>
+        ))}
+      </div>
     </div>
   );
 }
